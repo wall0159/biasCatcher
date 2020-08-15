@@ -47,6 +47,7 @@ class Analyse():
     def processText(self, text):
 
         ucaseWords = list()
+
         words = self.nlp(text)
         for aword in words:
             if aword.text in self.commonWords:
@@ -58,26 +59,21 @@ class Analyse():
                     ucaseWords.append(aword.text)
         newtext = text
         for uword in ucaseWords:
-            newtext = newtext.replace(uword,uword.upper())
+            newtext = newtext.replace(uword,'<mark>'+uword.upper()+'</mark>')
         return '\
 <!DOCTYPE html>\
 <html lang="en" dir="ltr">\
   <head>\
     <meta charset="utf-8">\
-    <title>Bias Catcher</title>\
+    <title>Bias Catcher</title><link rel="stylesheet" href="/static/css/template.css">\
   </head>\
-  <body>\
-    {% extends "template.html" %}\
-    {% block content %}\
+  <body> <header> <div class="container"> <h1 class="logo">Bias Catcher</h1> <strong><nav> <ul class="menu"> <li><a href="/">Home</a></li> </ul> </nav></strong> </div> </header> \
     <h1> Enter some text to detect common biases </h1>\
     <p> So much of what we write contains unconscious gender and other biases. This tool will help you to detect them. Please enter some text below to see an assessment. </p>\
         <form method="POST">\
-    <input name="text">\
+    <input name="text" value="' + text + '">\
     <input type="submit">\
 </form>\
 <p>' + newtext + '</p>\
-    {% endblock %}\
   </body>\
 </html>'
-
-
