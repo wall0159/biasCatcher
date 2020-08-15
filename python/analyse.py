@@ -56,9 +56,28 @@ class Analyse():
                 print(aword,probWord,sim)
                 if sim > 0.65:
                     ucaseWords.append(aword.text)
-
+        newtext = text
         for uword in ucaseWords:
-            text = text.replace(uword,uword.upper())
+            newtext = newtext.replace(uword,uword.upper())
+        return '\
+<!DOCTYPE html>\
+<html lang="en" dir="ltr">\
+  <head>\
+    <meta charset="utf-8">\
+    <title>Bias Catcher</title>\
+  </head>\
+  <body>\
+    {% extends "template.html" %}\
+    {% block content %}\
+    <h1> Enter some text to detect common biases </h1>\
+    <p> So much of what we write contains unconscious gender and other biases. This tool will help you to detect them. Please enter some text below to see an assessment. </p>\
+        <form method="POST">\
+    <input name="text">\
+    <input type="submit">\
+</form>\
+<p>' + newtext + '</p>\
+    {% endblock %}\
+  </body>\
+</html>'
 
-        return text
 
