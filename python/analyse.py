@@ -26,6 +26,9 @@ class Analyse():
         self.problemWordsNLP = self.nlp(self.problemWords)
         self.problemWordsList = self.problemWords.split(" ")
 
+        self.racistWords = 'black squaw dark nigger redskin indian'.lower()
+        self.racistWordsNLP = self.nlp(self.racistWords)
+        self.racistWordsList = self.racistWords.split(" ")
 
         for word in wordsToRemove:
             words1000 = words1000.replace(" " + word + " ", " ")
@@ -50,6 +53,7 @@ class Analyse():
     def processText(self, text):
 
         ucaseWords = list()
+        racistWords = list()
 
         words = self.nlp(text)
         for aword in words:
@@ -62,9 +66,16 @@ class Analyse():
                 print(aword,probWord,sim)
                 if sim > 0.65:
                     ucaseWords.append(aword.text)
+            for probWord in self.racistWordsNLP:
+                sim = aword.similarity(probWord)
+                print(aword,probWord,sim)
+                if sim > 0.65 and (aword.text not in ucaseWords):
+                    racistWords.append(aword.text)
         newtext = text
         for uword in ucaseWords:
-            newtext = newtext.replace(uword,'<div class="tooltip-wrap"><p>'+uword.upper()+'</p><div class="tooltip-content"><p>'+uword+ ' is a sexist term.<br><a href="https://www.urbandictionary.com/define.php?term='+uword+'"> Read its definition and history</a></p></div></div>')
+            newtext = newtext.replace(uword,'<div class="tooltip-wrap"><p><a href="https://www.urbandictionary.com/define.php?term='+uword.upper()+'">'+uword.upper()+'</a></p><div class="tooltip-content"><p>'+uword+ ' is a sexist term.<br><a href="https://en.wiktionary.org/wiki/'+uword+'"> Read its definition and history</a></p></div></div>')
+        for uword in racistWords:
+            newtext = newtext.replace(uword,'<div class="tooltip-wrap"><p><a href="https://www.urbandictionary.com/define.php?term='+uword.upper()+'">'+uword.upper()+'</a></p><div class="tooltip-content"><p>'+uword+ ' is a racist term.<br><a href="https://en.wiktionary.org/wiki/'+uword+'"> Read its definition and history</a></p></div></div>')
         return '\
 <!DOCTYPE html>\
 <html lang="en" dir="ltr">\
