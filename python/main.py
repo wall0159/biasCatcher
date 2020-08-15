@@ -1,11 +1,11 @@
 from flask import Flask, request, render_template
-import analyse
+import analyse as an
 
 app = Flask(__name__)
 
-@app.before_request
-def load_passport():
-    processor = Analyse
+# @app.before_request
+# def load_analyser():
+processor = an.Analyse()
 
 @app.route("/")
 def home():
@@ -19,7 +19,8 @@ def about():
 def my_form_post():
     text = request.form['text']
     #processed_text = text.upper()
-    processed_text = processor(text) # call to Analyse object
+
+    processed_text = processor.processText(text) # call to Analyse object
     return processed_text
 
 if __name__ == "__main__":

@@ -15,7 +15,7 @@ for remWord in wordsRemoveFromAllowList:
 
 # print(words1000)
 for word in wordsToRemove:
-    words1000 = words1000.replace(" " + word + " ", "")
+    words1000 = words1000.replace(" " + word + " ", " ")
 # print(words1000)
 commonWords = words1000.split(" ")
 print(commonWords)
