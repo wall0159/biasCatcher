@@ -23,3 +23,19 @@ body {
 .tooltip-wrap:hover .tooltip-content {
   display: block;
 }
+
+.tooltipSUGG-wrap {
+  position: relative;
+}
+.tooltipSUGG-wrap .tooltipSUGG-content {
+  display: none;
+  position: absolute;
+  bottom: 25%;
+  left: 5%;
+  right: 75%;
+  background-color: #5aa;
+  padding: .5em;
+}
+.tooltiSUGGp-wrap:hover .tooltipSUGG-content {
+  display: block;
+}

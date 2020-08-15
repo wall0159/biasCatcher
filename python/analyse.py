@@ -33,6 +33,28 @@ class Analyse():
         for word in wordsToRemove:
             words1000 = words1000.replace(" " + word + " ", " ")
 
+        # dictionary for word substance
+        self.wordSubs = {'guys': 'everybody',
+                    'ladies': 'everybody',
+                    'gentlemen': 'everybody',
+                    'mankind': 'humankind',
+                    'congressmen': 'members of congress',
+                    'boy': 'child',
+                    'girl': 'child',
+                    'sister': 'sibling, friend, soulmate',
+                    'brother': 'sibling, friend, soulmate',
+                    'girlfriend': 'partner, spouse',
+                    'boyfriend': 'partner, spouse',
+                    'waiter': 'server',
+                    'waitress': 'server',
+                    'fireman': 'firefighter',
+                    'policeman': 'police officer',
+                    'landlord': 'owner',
+                    'man power': 'workforce',
+                    'maiden name': 'fmaily name',
+                    'guys': 'team, friends, colleagues',
+                    }
+
         self.commonWords = words1000.split(" ")
         print("Stop words")
         print(self.commonWords)
@@ -64,14 +86,16 @@ class Analyse():
             for probWord in self.reduceProbWordsNLP:
                 sim = aword.similarity(probWord)
                 print(aword,probWord,sim)
-                if sim > 0.65:
+                if sim > 0.65 and (aword.text not in self.wordSubs.keys()):
                     ucaseWords.append(aword.text)
             for probWord in self.racistWordsNLP:
                 sim = aword.similarity(probWord)
                 print(aword,probWord,sim)
-                if sim > 0.65 and (aword.text not in ucaseWords):
+                if sim > 0.65 and (aword.text not in ucaseWords) and (aword.text not in self.wordSubs.keys()):
                     racistWords.append(aword.text)
         newtext = text
+        for uword in self.wordSubs.keys():
+            newtext = newtext.replace(uword,'<div class="tooltip-wrap">'+uword.upper()+'<div class="tooltip-content">instead of "'+ uword + '", try: ' + self.wordSubs[uword]+ '.<br></div></div>')
         for uword in ucaseWords:
             newtext = newtext.replace(uword,'<div class="tooltip-wrap"><p><a href="https://www.urbandictionary.com/define.php?term='+uword.upper()+'">'+uword.upper()+'</a></p><div class="tooltip-content"><p>'+uword+ ' is a sexist term.<br><a href="https://en.wiktionary.org/wiki/'+uword+'"> Read its definition and history</a></p></div></div>')
         for uword in racistWords:
