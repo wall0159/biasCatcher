@@ -1,0 +1,161 @@
+use pandas
+use pandas;
+import pandas
+quit();
+import spacy
+nlp = spacy.load("en_core_web_lg")
+nlp = spacy.load('en_core_web_lg')
+quit()
+import spacy
+nlp = spacy.load("en_core_web_lg")
+tokens = nlp("dog cat banana afskfsd")
+for token in tokens:
+    print(token.text, token.has_vector, token.vector_norm, token.is_oov)
+for token1 in tokens:
+    for token2 in tokens:
+        print(token1.text, token2.text, token1.similarity(token2))
+tokens = nlp("dog cat banana")
+for token1 in tokens:
+    for token2 in tokens:
+        print(token1.text, token2.text, token1.similarity(token2))
+interest_words = ("woman girl lady female wife housewife")
+prose = ("She nasty stupid")
+for token1 in interest_words:
+	for token2 in prose:
+		print(token1.text, token2.text, token1.similarity(token2))
+interest_words = nlp("woman girl lady female wife housewife")
+prose = nlp("She nasty stupid")
+for token1 in interest_words:
+	for token2 in prose:
+		print(token1.text, token2.text, token1.similarity(token2))
+man_words = nlp("man boy gentleman male husband househusband")
+for token1 in man_words:
+	for token2 in prose:
+		print(token1.text, token2.text, token1.similarity(token2))
+import spacy
+nlp = spacy.load("en_core_web_sm")
+doc = nlp("Apple is looking at buying U.K. startup for $1 billion")
+for token in doc:
+    print(token.text, token.lemma_, token.pos_, token.tag_, token.dep_,
+            token.shape_, token.is_alpha, token.is_stop)
+for token in prose:
+    print(token.text, token.lemma_, token.pos_, token.tag_, token.dep_,
+            token.shape_, token.is_alpha, token.is_stop)
+from spacy.lang.en.stop_words import STOP_WORDS
+print(STOP_WORDS) # <- set of Spacy's default stop words
+man = nlp("man")
+woman = nlp("woman")
+king = nlp("king")
+answer = nlp(king - man)
+answer = king - man
+answer = king.vector - man.vector
+print answer
+print(answer)
+print(answer.similarity)
+type man
+man.type
+man.describe
+man.show
+type(man)
+from scipy.spatial import distance
+ids = [x for x in nlp.vocab.vectors.keys()]
+vectors = [nlp.vocab.vectors[x] for x in ids]
+vectors = np.array(vectors)
+ids = [x for x in nlp.vocab.vectors.keys()]
+vectors = [nlp.vocab.vectors[x] for x in ids]
+vectors = np.array(vectors)
+p = np.array([nlp.vocab[answer].vector])
+import numpy as np
+p = np.array([nlp.vocab[answer].vector])
+p = np.array(answer)
+ids = [x for x in nlp.vocab.vectors.keys()]
+vectors = [nlp.vocab.vectors[x] for x in ids]
+vectors = np.array(vectors)
+closest_index = distance.cdist(p, vectors).argmin()
+closest_index = distance.cdist(p, vectors, metric='cosine').argmin()
+print(answer)
+# Imports
+from scipy.spatial import distance
+import spaCy
+# Load the spacy vocabulary
+nlp = spacy.load("en_core_web_lg")
+# Format the input vector for use in the distance function
+# In this case we will artificially create a word vector from a real word ("frog")
+# but any derived word vector could be used
+input_word = "frog"
+p = np.array([nlp.vocab[input_word].vector])
+# Format the vocabulary for use in the distance function
+ids = [x for x in nlp.vocab.vectors.keys()]
+vectors = [nlp.vocab.vectors[x] for x in ids]
+vectors = np.array(vectors)
+# *** Find the closest word below ***
+closest_index = distance.cdist(p, vectors).argmin()
+word_id = ids[closest_index]
+output_word = nlp.vocab[word_id].text
+# output_word is identical, or very close, to the input word
+word_id
+closest_index
+closest_index.word
+nlp.vocab.from_bytes(closest_index)
+nlp.vocab.strings
+nlp.vocab.has_vector(answer)
+nlp.vocab.has_vector("dog")
+nlp.vocab.get_vector(answer)
+avec = numpy.asarray(answer)
+avec = np.asarray(answer)
+most_similar = nlp.vocab.vectors.most_similar(avec,n=10)
+most_similar = nlp.vocab.vectors.most_similar(answer,n=10)
+most_similar = nlp.vocab.vectors.most_similar(answer)
+answer
+dog.vector
+man.vector
+most_similar = nlp.vocab.vectors.most_similar(answer.reshape(1,300))
+most_similar = nlp.vocab.vectors.most_similar(answer.reshape(1,96))
+answer.shape
+man.vector.shape
+man.vector_norm
+nlp.vocab.vectors.most_similar(nlp.vocab['hello'].vector.reshape(1,300))
+nlp.vocab.vectors.most_similar(nlp.vocab['hello'].vector.reshape(1,300),n=10)
+npa=np.array(answer)
+npa=np.array(man)
+npa=np.array(king)
+npk=np.array(king)
+npm=np.array(man)
+npa= npk - npm
+npa= np.subtract(king.vector,man.vector)
+npa.shape
+npa.reshape(1,300)
+npa.reshape(96,)
+npa.reshape(300,)
+npa.resize(300)
+nlp.vocab.vectors.shape[1]
+man.to_array(arrrr)
+man.vector_norm.shape
+man.vector.shape
+man = nlp("man")
+man.vector.shape
+woman = nlp)"woman")
+woman = nlp("woman")
+king = nlp("king")
+king.vector - man.vector
+answer = king.vector - man.vector
+nlp.vocab.vectors.most_similar(answer)
+nlp.vocab.vectors.most_similar(man.vector)
+nlp.vocab.vectors.most_similar(man.vector.reshape(1,300))
+nlp.vocab.vectors.most_similar(answer.reshape(1,300))
+nlp.vocab[13176088972490086564]
+nlp.vocab[13176088972490086564].string
+nlp.vocab.strings[13176088972490086564]
+nlp.vocab.vectors.most_similar(answer.reshape(1,300),n=10)
+for term in [ 7464393751932445219, 14826469074451677028, 13176088972490086564,
+         7102492827649024548,  5578855234836721309,  6599815902708227193,
+         3708855936003160130, 10168488388102651113,  5247273317732208552,
+         4176741725343376093]:
+	nlp.vocab.strings[term]
+newnlp = spacy.load('en_vectors_web_lg')
+newnlp = spacy.load('en_core_web_lg')
+newnlp.shape
+newnlp.vocab.vectors.shape
+import readline
+readline.write_history_file('/home/ahj/history')
+readline.write_history_file('history')
