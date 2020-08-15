@@ -58,7 +58,7 @@ class Analyse():
                     ucaseWords.append(aword.text)
 
         for uword in ucaseWords:
-            newtext = text.replace(uword,uword.upper())
+            text = text.replace(uword,uword.upper())
 
-        return newtext
+        return text
 
