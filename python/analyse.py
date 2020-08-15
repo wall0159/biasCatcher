@@ -105,9 +105,9 @@ class Analyse():
         for uword in self.wordSubs.keys():
             newtext = newtext.replace(" " + uword + " ",'<div class="tooltip-wrap">'+" " + uword.upper()+'<div class="tooltip-content">instead of "'+ uword + '", try: ' + self.wordSubs[uword]+ '.<br></div></div>')
         for uword in ucaseWords:
-            newtext = newtext.replace(" " + uword + " ",'<div class="tooltip-wrap"><p><a href="https://www.urbandictionary.com/define.php?term='+" " + uword.upper()+'">'+uword.upper()+'</a></p><div class="tooltip-content"><p>'+uword+ ' is a sexist term.<br><a href="https://en.wiktionary.org/wiki/'+uword+'"> Read its definition and history</a></p></div></div>')
+            newtext = newtext.replace(" " + uword + " ",'<div class="tooltip-wrap"><p><a href="https://www.urbandictionary.com/define.php?term='+" " + uword.upper()+'">'+uword.upper()+'</a></p><div class="tooltip-content"><p>'+uword+ ' can have sexist connotations.<br><a href="https://en.wiktionary.org/wiki/'+uword+'"> Read its definition and history</a></p></div></div>')
         for uword in racistWords:
-            newtext = newtext.replace(" " + uword + " ",'<div class="tooltip-wrap"><p><a href="https://www.urbandictionary.com/define.php?term='+" " + uword.upper()+'">'+uword.upper()+'</a></p><div class="tooltip-content"><p>'+uword+ ' is a racist term.<br><a href="https://en.wiktionary.org/wiki/'+uword+'"> Read its definition and history</a></p></div></div>')
+            newtext = newtext.replace(" " + uword + " ",'<div class="tooltip-wrap"><p><a href="https://www.urbandictionary.com/define.php?term='+" " + uword.upper()+'">'+uword.upper()+'</a></p><div class="tooltip-content"><p>'+uword+ ' can have racist connotations.<br><a href="https://en.wiktionary.org/wiki/'+uword+'"> Read its definition and history</a></p></div></div>')
         return '\
 <!DOCTYPE html>\
 <html lang="en" dir="ltr">\
