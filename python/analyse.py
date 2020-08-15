@@ -47,6 +47,7 @@ class Analyse():
     def processText(self, text):
 
         ucaseWords = list()
+
         words = self.nlp(text)
         for aword in words:
             if aword.text in self.commonWords:
@@ -58,7 +59,6 @@ class Analyse():
                     ucaseWords.append(aword.text)
 
         for uword in ucaseWords:
-            text = text.replace(uword,uword.upper())
+            text = text.replace(uword,'<mark>'+uword+'</mark>')
 
         return text
-
