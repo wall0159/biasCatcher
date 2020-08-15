@@ -36,12 +36,15 @@ class Analyse():
     def processText(self, text):
         listWords = text.split(" ")
         listNums = [0] * len(listWords)
+        # loop through all the words in the input text
         for i in range(0,len(listWords)):
+            # if the word is in the de-gendered top 1000 words (some issues here still) then ignore it
             if listWords[i] in self.commonWords:
                 continue
             # identify the problem words here, return a list of words and a
             # list of bools that indicate which words are a problem
             thisTok = self.nlp(listWords[i])
+            # loop through all the problem words to score against each
             for probWord in self.problemWordsList:
                 sim = thisTok.similarity(self.nlp(probWord))
                 print(listWords[i], probWord, sim)
