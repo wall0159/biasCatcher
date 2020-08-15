@@ -64,7 +64,7 @@ class Analyse():
                     ucaseWords.append(aword.text)
         newtext = text
         for uword in ucaseWords:
-            newtext = newtext.replace(uword,'<mark>'+uword.upper()+'</mark>')
+            newtext = newtext.replace(uword,'<div class="tooltip-wrap"><p>'+uword.upper()+'</p><div class="tooltip-content"><p>'+uword+ ' is a sexist term.<br><a href="https://www.urbandictionary.com/define.php?term='+uword+'"> Read its definition and history</a></p></div></div>')
         return '\
 <!DOCTYPE html>\
 <html lang="en" dir="ltr">\
@@ -79,6 +79,6 @@ class Analyse():
     <input name="text" value="' + text + '">\
     <input type="submit">\
 </form>\
-<p>' + newtext + '</p>\
+' + newtext + '\
   </body>\
 </html>'

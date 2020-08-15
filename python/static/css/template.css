@@ -7,3 +7,19 @@ body {
   padding: 10px;
   color: white;
 }
+
+.tooltip-wrap {
+  position: relative;
+}
+.tooltip-wrap .tooltip-content {
+  display: none;
+  position: absolute;
+  bottom: 25%;
+  left: 5%;
+  right: 55%;
+  background-color: #d55;
+  padding: .5em;
+}
+.tooltip-wrap:hover .tooltip-content {
+  display: block;
+}
