@@ -1,6 +1,6 @@
 import spacy as sp
 import re
-
+#import time
 class Analyse():
     def __init__(self):
         self.nlp = sp.load("en_core_web_lg")
@@ -89,12 +89,14 @@ class Analyse():
                 continue
             for probWord in self.reduceProbWordsNLP:
                 sim = aword.similarity(probWord)
-                print(aword,probWord,sim)
+                print(aword,"related to gendered word (hidden) with similarity:",sim)
+#                time.sleep(1)
                 if sim > 0.75 and (aword.text not in self.wordSubs.keys()):
                     ucaseWords.append(aword.text)
             for probWord in self.racistWordsNLP:
                 sim = aword.similarity(probWord)
-                print(aword,probWord,sim)
+                print(aword,"related to racist word (hidden) with similarity:",sim)
+#                time.sleep(1)
                 if sim > 0.75 and (aword.text not in ucaseWords) and (aword.text not in self.wordSubs.keys()):
                     racistWords.append(aword.text)
         print(ucaseWords)
@@ -131,7 +133,7 @@ class Analyse():
     <h1> Enter some text to detect common biases </h1>\
     <p> So much of what we write contains unconscious gender and other biases. This tool will help you to detect them. Please enter some text below to see an assessment. </p>\
         <form method="POST">\
-    <input name="text" value="' + text + '">\
+    <textarea name="text" value="' + text + '"></textarea>\
     <input type="submit">\
 </form>\
 ' + newtext + '\

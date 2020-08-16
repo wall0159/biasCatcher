@@ -7,11 +7,16 @@
   <body>
     {% extends "template.html" %}
     {% block content %}
-
+    <p>Even people who make an effort to be inclusive, sometimes include loaded language. Classic texts, work emails and public debate commonly suffer from this problem. As Leaders, educators, parents and citizens, the inclusiveness of our language is important.</p>
+<p>We created “Bias Catcher” as a tool to process a passage of text, an email, a newsletter, or a social media post. By highlighting isolating language, Bias Catcher can help people to identify unconscious bias in written communications.</p>
+<p>With Bias Catcher, machine learning enables automated flagging of relevant content for review. We use a word vector model to find semantic relationships between input content and an initial set of keywords and phrases. The semantic distance algorithm allows this matching to detect words that may not be in the list, but have a close semantic meaning to a word in the list.</p>
+<p>For example, the list flags that blonde is known to be sometimes used in an offensive context. The semantic distance algorithm therefore also detects that redhead might also raise the same potential concerns.</p>
+<p>The way our books are read, the way our leaders speak to the people, the way businesses collaborate internationally. It all leads to a more inclusive communication platform, where no-one feels left out.</p>
+<p>We have a very basic version of Bias Catcher live right now. We encourage you to try it for yourself below.</p>
     <h1> Enter some text to detect common biases </h1>
     <p> So much of what we write contains unconscious gender and other biases. This tool will help you to detect them. Please enter some text below to see an assessment. </p>
 	<form method="POST">
-    <input name="text">
+		<textarea name="text"></textarea>
     <input type="submit">
 </form>    
     {% endblock %}

@@ -8,6 +8,13 @@ body {
   color: white;
 }
 
+.textarea {
+  width: auto;
+  min-width: 480px;
+  height: auto;
+  min-height: 100px;
+}
+
 .tooltip-wrap {
   position: relative;
   display: inline-block;
@@ -16,7 +23,7 @@ body {
 .tooltip-wrap .tooltip-content {
     visibility: hidden;
   width: 120px;
-  background-color: black;
+  background-color: lightseagreen;
   color: #fff;
   text-align: center;
   padding: 5px 0;
